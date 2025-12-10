@@ -39,7 +39,8 @@ pids
 
 # SQLite database (data is volume mounted)
 *.db
-data/*.db
+data/*
+!data/.gitkeep
 
 # Uploads (volume mounted)
 uploads/*
