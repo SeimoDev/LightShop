@@ -7,7 +7,6 @@ import com.lightshop.model.CartItem;
 import com.lightshop.model.Product;
 import com.lightshop.util.JsonUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/api/cart", "/api/cart/*"})
 public class CartServlet extends HttpServlet {
     private final CartDao cartDao = new CartDao();
     private final ProductDao productDao = new ProductDao();

@@ -6,14 +6,12 @@ import com.lightshop.model.Product;
 import com.lightshop.util.JsonUtil;
 import com.lightshop.util.StringUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/api/admin/products", "/api/admin/products/*"})
 public class AdminProductServlet extends HttpServlet {
     private final ProductDao productDao = new ProductDao();
 

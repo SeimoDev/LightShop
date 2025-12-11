@@ -3,7 +3,6 @@ package com.lightshop.servlet.admin;
 import com.lightshop.dao.*;
 import com.lightshop.util.JsonUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/api/admin/dashboard")
 public class DashboardServlet extends HttpServlet {
     private final UserDao userDao = new UserDao();
     private final ProductDao productDao = new ProductDao();

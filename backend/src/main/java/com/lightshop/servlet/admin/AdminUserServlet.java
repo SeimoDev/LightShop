@@ -5,7 +5,6 @@ import com.lightshop.dao.UserDao;
 import com.lightshop.model.User;
 import com.lightshop.util.JsonUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/api/admin/users", "/api/admin/users/*"})
 public class AdminUserServlet extends HttpServlet {
     private final UserDao userDao = new UserDao();
 

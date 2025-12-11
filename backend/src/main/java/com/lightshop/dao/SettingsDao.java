@@ -23,19 +23,12 @@ public class SettingsDao {
     }
 
     public boolean update(Settings settings) {
-        String sql = """
-            INSERT INTO settings (id, site_name, logo, description, keywords, contact_phone, contact_email, address, copyright)
-            VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT(id) DO UPDATE SET
-                site_name = excluded.site_name,
-                logo = excluded.logo,
-                description = excluded.description,
-                keywords = excluded.keywords,
-                contact_phone = excluded.contact_phone,
-                contact_email = excluded.contact_email,
-                address = excluded.address,
-                copyright = excluded.copyright
-        """;
+        String sql = "INSERT INTO settings (id, site_name, logo, description, keywords, contact_phone, contact_email, address, copyright) " +
+            "VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?) " +
+            "ON CONFLICT(id) DO UPDATE SET " +
+            "site_name = excluded.site_name, logo = excluded.logo, description = excluded.description, " +
+            "keywords = excluded.keywords, contact_phone = excluded.contact_phone, contact_email = excluded.contact_email, " +
+            "address = excluded.address, copyright = excluded.copyright";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, settings.getSiteName());

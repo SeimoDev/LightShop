@@ -11,14 +11,9 @@ public class FavoriteDao {
 
     public List<Favorite> findByUserId(int userId, int page, int pageSize) {
         List<Favorite> favorites = new ArrayList<>();
-        String sql = """
-            SELECT f.*, p.name as product_name, p.price as product_price, p.images as product_image
-            FROM favorites f 
-            JOIN products p ON f.product_id = p.id 
-            WHERE f.user_id = ? AND p.status = 1
-            ORDER BY f.created_at DESC
-            LIMIT ? OFFSET ?
-        """;
+        String sql = "SELECT f.*, p.name as product_name, p.price as product_price, p.images as product_image " +
+            "FROM favorites f JOIN products p ON f.product_id = p.id " +
+            "WHERE f.user_id = ? AND p.status = 1 ORDER BY f.created_at DESC LIMIT ? OFFSET ?";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, userId);

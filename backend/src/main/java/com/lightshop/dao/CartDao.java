@@ -11,14 +11,10 @@ public class CartDao {
 
     public List<CartItem> findByUserId(int userId) {
         List<CartItem> items = new ArrayList<>();
-        String sql = """
-            SELECT c.*, p.name as product_name, p.price as product_price, 
-                   p.images as product_image, p.stock as product_stock
-            FROM cart_items c 
-            JOIN products p ON c.product_id = p.id 
-            WHERE c.user_id = ? AND p.status = 1
-            ORDER BY c.created_at DESC
-        """;
+        String sql = "SELECT c.*, p.name as product_name, p.price as product_price, " +
+            "p.images as product_image, p.stock as product_stock " +
+            "FROM cart_items c JOIN products p ON c.product_id = p.id " +
+            "WHERE c.user_id = ? AND p.status = 1 ORDER BY c.created_at DESC";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, userId);
@@ -177,14 +173,10 @@ public class CartDao {
 
     public List<CartItem> findSelectedByUserId(int userId) {
         List<CartItem> items = new ArrayList<>();
-        String sql = """
-            SELECT c.*, p.name as product_name, p.price as product_price, 
-                   p.images as product_image, p.stock as product_stock
-            FROM cart_items c 
-            JOIN products p ON c.product_id = p.id 
-            WHERE c.user_id = ? AND c.selected = 1 AND p.status = 1
-            ORDER BY c.created_at DESC
-        """;
+        String sql = "SELECT c.*, p.name as product_name, p.price as product_price, " +
+            "p.images as product_image, p.stock as product_stock " +
+            "FROM cart_items c JOIN products p ON c.product_id = p.id " +
+            "WHERE c.user_id = ? AND c.selected = 1 AND p.status = 1 ORDER BY c.created_at DESC";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, userId);

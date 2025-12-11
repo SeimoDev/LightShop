@@ -5,7 +5,6 @@ import com.lightshop.dao.ReviewDao;
 import com.lightshop.model.Product;
 import com.lightshop.util.JsonUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/api/products", "/api/products/*"})
 public class ProductServlet extends HttpServlet {
     private final ProductDao productDao = new ProductDao();
     private final ReviewDao reviewDao = new ReviewDao();

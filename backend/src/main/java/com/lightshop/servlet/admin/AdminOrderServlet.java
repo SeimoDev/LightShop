@@ -8,14 +8,12 @@ import com.lightshop.model.Order;
 import com.lightshop.model.OrderItem;
 import com.lightshop.util.JsonUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/api/admin/orders", "/api/admin/orders/*"})
 public class AdminOrderServlet extends HttpServlet {
     private final OrderDao orderDao = new OrderDao();
     private final ProductDao productDao = new ProductDao();

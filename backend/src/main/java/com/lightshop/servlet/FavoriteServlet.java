@@ -7,7 +7,6 @@ import com.lightshop.model.Favorite;
 import com.lightshop.model.Product;
 import com.lightshop.util.JsonUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/api/favorites", "/api/favorites/*"})
 public class FavoriteServlet extends HttpServlet {
     private final FavoriteDao favoriteDao = new FavoriteDao();
     private final ProductDao productDao = new ProductDao();

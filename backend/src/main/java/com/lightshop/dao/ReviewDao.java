@@ -11,14 +11,9 @@ public class ReviewDao {
 
     public List<Review> findByProductId(int productId, int page, int pageSize) {
         List<Review> reviews = new ArrayList<>();
-        String sql = """
-            SELECT r.*, u.username, u.avatar as user_avatar
-            FROM reviews r 
-            JOIN users u ON r.user_id = u.id 
-            WHERE r.product_id = ?
-            ORDER BY r.created_at DESC
-            LIMIT ? OFFSET ?
-        """;
+        String sql = "SELECT r.*, u.username, u.avatar as user_avatar " +
+            "FROM reviews r JOIN users u ON r.user_id = u.id " +
+            "WHERE r.product_id = ? ORDER BY r.created_at DESC LIMIT ? OFFSET ?";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, productId);

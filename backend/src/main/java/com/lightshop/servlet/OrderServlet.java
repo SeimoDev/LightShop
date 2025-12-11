@@ -7,7 +7,6 @@ import com.lightshop.model.*;
 import com.lightshop.util.JsonUtil;
 import com.lightshop.util.StringUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +14,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/api/orders", "/api/orders/*"})
 public class OrderServlet extends HttpServlet {
     private final OrderDao orderDao = new OrderDao();
     private final CartDao cartDao = new CartDao();

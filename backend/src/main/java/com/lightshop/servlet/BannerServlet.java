@@ -4,14 +4,12 @@ import com.lightshop.dao.BannerDao;
 import com.lightshop.model.Banner;
 import com.lightshop.util.JsonUtil;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/api/banners", "/api/admin/banners", "/api/admin/banners/*"})
 public class BannerServlet extends HttpServlet {
     private final BannerDao bannerDao = new BannerDao();
 

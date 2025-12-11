@@ -3,7 +3,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      network: host
     container_name: lightshop-backend
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     ports:
       - "8080:8080"
     volumes:
