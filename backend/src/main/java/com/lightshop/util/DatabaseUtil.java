@@ -220,10 +220,11 @@ public class DatabaseUtil {
             stmt.execute("CREATE INDEX IF NOT EXISTS idx_favorites_user ON favorites(user_id)");
             stmt.execute("CREATE INDEX IF NOT EXISTS idx_reviews_product ON reviews(product_id)");
 
-            // Insert default admin user if not exists
+            // Insert default admin user if not exists (password: admin123)
+            String adminPassword = PasswordUtil.hashPassword("admin123");
             stmt.execute(
                 "INSERT OR IGNORE INTO users (id, username, password, email, role, status) " +
-                "VALUES (1, 'admin', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZRGdjGj/n3.YlH1Tcd.8HXRDrQP2C', 'admin@lightshop.com', 1, 1)"
+                "VALUES (1, 'admin', '" + adminPassword + "', 'admin@lightshop.com', 1, 1)"
             );
 
             // Insert default settings if not exists
