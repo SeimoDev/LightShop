@@ -4,6 +4,7 @@ import { addressApi } from '@/api'
 import { useToastStore } from '@/stores/toast'
 import Loading from '@/components/Loading.vue'
 import Empty from '@/components/Empty.vue'
+import RegionPicker from '@/components/RegionPicker.vue'
 
 const toast = useToastStore()
 
@@ -217,35 +218,11 @@ async function setDefault(id) {
               </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-4">
-              <div>
-                <label class="block text-white/70 text-sm mb-2">省份</label>
-                <input
-                  v-model="form.province"
-                  type="text"
-                  placeholder="省"
-                  class="glass-input"
-                />
-              </div>
-              <div>
-                <label class="block text-white/70 text-sm mb-2">城市</label>
-                <input
-                  v-model="form.city"
-                  type="text"
-                  placeholder="市"
-                  class="glass-input"
-                />
-              </div>
-              <div>
-                <label class="block text-white/70 text-sm mb-2">区县</label>
-                <input
-                  v-model="form.district"
-                  type="text"
-                  placeholder="区"
-                  class="glass-input"
-                />
-              </div>
-            </div>
+            <RegionPicker
+              v-model:province="form.province"
+              v-model:city="form.city"
+              v-model:district="form.district"
+            />
 
             <div>
               <label class="block text-white/70 text-sm mb-2">详细地址 *</label>
