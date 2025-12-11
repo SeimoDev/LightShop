@@ -22,7 +22,10 @@ const passwordForm = ref({
   confirmPassword: ''
 })
 
-onMounted(() => {
+onMounted(async () => {
+  // 刷新用户信息（包括余额）
+  await userStore.fetchProfile()
+  
   form.value.email = userStore.user?.email || ''
   form.value.phone = userStore.user?.phone || ''
 })

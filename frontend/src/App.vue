@@ -1,8 +1,19 @@
 <script setup>
+import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import Toast from '@/components/Toast.vue'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
+
+// 应用启动时刷新用户信息（包括余额）
+onMounted(() => {
+  if (userStore.isLoggedIn) {
+    userStore.fetchProfile()
+  }
+})
 </script>
 
 <template>

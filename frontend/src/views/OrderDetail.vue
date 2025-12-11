@@ -3,11 +3,13 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { orderApi } from '@/api'
 import { useToastStore } from '@/stores/toast'
+import { useUserStore } from '@/stores/user'
 import Loading from '@/components/Loading.vue'
 
 const route = useRoute()
 const router = useRouter()
 const toast = useToastStore()
+const userStore = useUserStore()
 
 const loading = ref(true)
 const order = ref(null)
@@ -56,6 +58,8 @@ async function payOrder() {
     await orderApi.pay(order.value.orderNo)
     toast.success('支付成功')
     loadOrder()
+    // 刷新用户余额
+    userStore.fetchProfile()
   } catch {
     // Error handled by interceptor
   }
